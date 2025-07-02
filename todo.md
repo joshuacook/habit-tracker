@@ -13,7 +13,7 @@
 | ~~T-04~~ | ~~**Implement `init`**~~ | ~~`habit init` creates `habits.db` with `habits` + `entries` tables.~~ |
 | | | **Completed**: Implemented and tested the `init` command. Running `habit init` creates a `habits.db` SQLite file with the correct `habits` and `entries` tables. The command is idempotent and can be run multiple times safely. |
 | | | **Completed**: Implemented and tested the `add` command. Adding a new habit works as expected, and trying to add a duplicate habit name results in a clear error message due to the UNIQUE constraint. |
-| T-06 | **Implement `done`** | Marks a habit complete for `date.today()`; idempotent. |
+| | | **Completed**: Implemented and tested the `done` command. Marking a habit as done for today works and is idempotent (safe to run multiple times). Error handling is in place for non-existent habits. |
 | T-07 | **Implement `list`** | `--today` (default) vs. `--all`; nice emoji ✔️ / ❌. |
 | T-08 | **Implement `stats`** | Percentage complete over window; bar chart text (e.g., `#####-----`). |
 | T-09 | **Unit tests** | Cover `db.py` helpers + each CLI command. |
