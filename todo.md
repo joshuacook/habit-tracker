@@ -16,7 +16,8 @@
 | | | **Completed**: Implemented and tested the `done` command. Marking a habit as done for today works and is idempotent (safe to run multiple times). Error handling is in place for non-existent habits. |
 | | | **Completed**: Implemented and tested the `list` command. By default, it shows all habits with today's status using emoji (✔️/❌). The `--all` option shows all habits regardless of today's completion. |
 | | | **Completed**: Implemented and tested the `stats` command. Shows completion percentage per habit over a configurable window, with a visual bar chart (e.g., `████░░░░░░░░░░░░░░░░░░`). |
-| T-09 | **Unit tests** | Cover `db.py` helpers + each CLI command. |
+| ~~T-09~~ | ~~**Unit tests**~~ | ~~Cover `db.py` helpers + each CLI command.~~ |
+| | | **Completed**: Created comprehensive unit tests with 99% coverage. Tests cover database operations, model validation, CLI commands, error handling, and edge cases. All 41 tests pass (40 passed, 1 skipped). |
 | T-10 | **Docstrings & type hints** | Ensure every public function passes `ruff`, `mypy`. |
 | T-11 | **Update docs** | Flesh out README usage; add `docs/schema.md` with ER diagram (ASCII). |
 | T-12 | **Release v0.1.0** | Tag, create `CHANGELOG.md`, update version badge in README. |
