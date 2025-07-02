@@ -6,7 +6,8 @@
 |----|------|----------------------------|
 | ~~T-01~~ | ~~**Scaffold project**~~ | ~~Create repo structure shown in *description.md*.~~ |
 | | | **Completed**: Created `habit/` package with `__init__.py`, `cli.py`, `db.py`, `models.py`. Created `tests/` directory with `__init__.py`. Added `requirements.txt` with Click and pytest dependencies. All files include proper type hints, docstrings, and follow the project's coding conventions. |
-| T-02 | **Write README skeleton** | Overview, install steps (`pipx`, venv), example session. |
+| ~~T-02~~ | ~~**Write README skeleton**~~ | ~~Overview, install steps (`pipx`, venv), example session.~~ |
+| | | **Completed**: Enhanced README with comprehensive installation instructions (pipx and venv options), detailed quick start guide, complete example session showing all commands, commands reference table, development setup instructions, and database schema documentation. Added setup.py for package installation. |
 | T-03 | **Pin dependencies** | Add `Click`, `pytest`, dev tools to `requirements.txt`; update README. |
 | T-04 | **Implement `init`** | `habit init` creates `habits.db` with `habits` + `entries` tables. |
 | T-05 | **Implement `add`** | Inserts new habit row with UNIQUE constraint on name. |

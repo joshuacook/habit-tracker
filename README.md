@@ -1,8 +1,114 @@
 # Lightweight Habit-Tracker CLI
 
-## Purpose
 A tiny command-line tool that helps a single user record and review daily habits.  
 The focus is *simplicity*—one self-contained SQLite file and a handful of clear commands.
+
+## Installation
+
+### Option 1: Using pipx (Recommended)
+```bash
+# Install directly from this repository
+pipx install git+https://github.com/yourusername/habit-tracker.git
+
+# Or install in editable mode for development
+pipx install --editable .
+```
+
+### Option 2: Using virtual environment
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/habit-tracker.git
+cd habit-tracker
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install the package
+pip install -e .
+```
+
+## Quick Start
+
+1. **Initialize the database:**
+   ```bash
+   habit init
+   ```
+
+2. **Add your first habit:**
+   ```bash
+   habit add "Drink water"
+   habit add "Exercise"
+   habit add "Read 30 minutes"
+   ```
+
+3. **Mark habits as done:**
+   ```bash
+   habit done "Drink water"
+   habit done "Exercise"
+   ```
+
+4. **Check your progress:**
+   ```bash
+   habit list
+   habit stats --days 7
+   ```
+
+## Example Session
+
+```bash
+$ habit init
+✅ Database initialized successfully!
+
+$ habit add "Morning meditation"
+✅ Added habit: Morning meditation
+
+$ habit add "Drink 8 glasses of water"
+✅ Added habit: Drink 8 glasses of water
+
+$ habit add "Read before bed"
+✅ Added habit: Read before bed
+
+$ habit done "Morning meditation"
+✅ Marked 'Morning meditation' as done for today!
+
+$ habit done "Drink 8 glasses of water"
+✅ Marked 'Drink 8 glasses of water' as done for today!
+
+$ habit list
+✔️ Morning meditation
+✔️ Drink 8 glasses of water
+❌ Read before bed
+
+$ habit stats --days 7
+📊 Stats for the last 7 days:
+Morning meditation: ████████████████████ 100.0%
+Drink 8 glasses of water: ████████████████████ 100.0%
+Read before bed: ░░░░░░░░░░░░░░░░░░░░ 0.0%
+
+$ habit list --all
+✔️ Morning meditation
+✔️ Drink 8 glasses of water
+❌ Read before bed
+```
+
+## Commands Reference
+
+| Command | Example | Description |
+|---------|---------|-------------|
+| `init`  | `habit init` | Create the database and starter tables. |
+| `add`   | `habit add "Drink water"` | Register a new habit. |
+| `done`  | `habit done "Drink water"` | Mark today's completion (idempotent). |
+| `list`  | `habit list --all` | Show all habits with today's status. |
+| `stats` | `habit stats --days 7` | Show completion % per habit over a window. |
+
+### Command Options
+
+- `habit list --all`: Show all habits (default shows only today's status)
+- `habit stats --days N`: Show stats for the last N days (default: 7)
 
 ## Key Commands (MVP)
 
@@ -10,8 +116,8 @@ The focus is *simplicity*—one self-contained SQLite file and a handful of clea
 |---------|---------|--------------|
 | `init`  | `habit init` | Create the database and starter tables. |
 | `add`   | `habit add "Drink water"` | Register a new habit. |
-| `done`  | `habit done "Drink water"` | Mark today’s completion (creates row if missing). |
-| `list`  | `habit list --today` | Show all habits with today’s status. |
+| `done`  | `habit done "Drink water"` | Mark today's completion (creates row if missing). |
+| `list`  | `habit list --today` | Show all habits with today's status. |
 | `stats` | `habit stats --days 7` | Show completion % per habit over a window. |
 
 *(Stretch)*: export CSV, delete habits, emoji progress bar, simple TUI later.
@@ -38,6 +144,46 @@ habit_tracker/
 ├─ todo.md
 └─ requirements.txt
 ```
+
+## Development
+
+### Setup Development Environment
+```bash
+# Clone and setup
+git clone https://github.com/yourusername/habit-tracker.git
+cd habit-tracker
+
+# Install in editable mode with dev dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Run linting and formatting
+ruff check .
+black .
+mypy habit/
+```
+
+### Development Tools
+
+The project uses several development tools to maintain code quality:
+
+- **pytest**: Testing framework
+- **black**: Code formatter
+- **ruff**: Fast Python linter
+- **mypy**: Static type checker
+
+All tools are pinned to specific versions in `requirements.txt` for reproducible builds.
+
+### Database Schema
+
+The tool uses a simple SQLite database with two tables:
+
+- **habits**: Stores habit definitions (id, name, created_at)
+- **entries**: Stores daily completions (id, habit_id, entry_date, created_at)
+
+The database file (`habits.db`) is created in the project root when you run `habit init`.
 
 ## Documentation Rules (teach Cursor these!)
 
