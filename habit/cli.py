@@ -3,10 +3,8 @@
 from __future__ import annotations
 
 import click
-from pathlib import Path
 
 from .db import HabitDatabase
-from .models import Habit, Entry
 
 
 @click.group()
@@ -45,7 +43,7 @@ def done(name: str) -> None:
     """Mark a habit as completed for today."""
     db = HabitDatabase()
     try:
-        entry = db.mark_habit_done(name)
+        db.mark_habit_done(name)
         click.echo(f"✅ Marked '{name}' as done for today!")
     except ValueError as e:
         click.echo(f"❌ Error: {e}")

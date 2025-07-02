@@ -76,6 +76,8 @@ class HabitDatabase:
                 (name,)
             )
             habit_id = cursor.lastrowid
+            if habit_id is None:
+                raise RuntimeError("Failed to get habit ID from database")
             conn.commit()
             
             return Habit(id=habit_id, name=name, created_at=datetime.now())
@@ -131,6 +133,8 @@ class HabitDatabase:
                 (habit.id, today)
             )
             entry_id = cursor.lastrowid
+            if entry_id is None:
+                raise RuntimeError("Failed to get entry ID from database")
             conn.commit()
             
             return Entry(
