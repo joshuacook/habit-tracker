@@ -12,7 +12,7 @@
 | | | **Completed**: Pinned all dependencies to specific versions: Click==8.1.7, pytest==8.0.0, black==24.1.1, ruff==0.2.1, mypy==1.8.0. Updated setup.py to match requirements.txt. Added development tools section to README with usage instructions. All dependencies install successfully. |
 | ~~T-04~~ | ~~**Implement `init`**~~ | ~~`habit init` creates `habits.db` with `habits` + `entries` tables.~~ |
 | | | **Completed**: Implemented and tested the `init` command. Running `habit init` creates a `habits.db` SQLite file with the correct `habits` and `entries` tables. The command is idempotent and can be run multiple times safely. |
-| T-05 | **Implement `add`** | Inserts new habit row with UNIQUE constraint on name. |
+| | | **Completed**: Implemented and tested the `add` command. Adding a new habit works as expected, and trying to add a duplicate habit name results in a clear error message due to the UNIQUE constraint. |
 | T-06 | **Implement `done`** | Marks a habit complete for `date.today()`; idempotent. |
 | T-07 | **Implement `list`** | `--today` (default) vs. `--all`; nice emoji ✔️ / ❌. |
 | T-08 | **Implement `stats`** | Percentage complete over window; bar chart text (e.g., `#####-----`). |
